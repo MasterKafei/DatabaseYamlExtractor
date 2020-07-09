@@ -1,0 +1,24 @@
+services:
+    dyosis.database_yaml_extractor.database_yaml_extractor:
+        class: Dyosis\DatabaseYamlExtractorBundle\DatabaseYamlExtractor\DatabaseYamlExtractor
+        arguments: ['@doctrine']
+        calls:
+            - ['setConfig', ['%dyosis.database_yaml_extractor%']]
+
+    dyosis.database_yaml_extractor.database_yaml_importer:
+        class: Dyosis\DatabaseYamlExtractorBundle\DatabaseYamlExtractor\DatabaseYamlImporter
+        arguments: ['@doctrine']
+        calls:
+            - ['setConfig', ['%dyosis.database_yaml_extractor%']]
+
+    dyosis.database_yaml_extractor.export:
+        class: Dyosis\DatabaseYamlExtractorBundle\Command\ExportCommand
+        arguments: ['@dyosis.database_yaml_extractor.database_yaml_extractor']
+        tags:
+            - {name: 'console.command' }
+
+    dyosis.database_yaml_extractor.import:
+        class: Dyosis\DatabaseYamlExtractorBundle\Command\ImportCommand
+        arguments: ['@dyosis.database_yaml_extractor.database_yaml_importer']
+        tags:
+            - {name: 'console.command' }

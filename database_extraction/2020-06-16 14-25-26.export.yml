@@ -1,0 +1,14 @@
+AppBundle\Entity\Author:
+    - { fields: { id: 3, firstName: Jean, lastName: Marius, age: 23 }, associations: { posts: {  }, manies: [6, 7, 8] } }
+    - { fields: { id: 4, firstName: Paul, lastName: Marius, age: 21 }, associations: { posts: [3, 4], manies: [6, 8, 9, 10] } }
+AppBundle\Entity\Many:
+    - { fields: { id: 6 }, associations: { authors: [3, 4] } }
+    - { fields: { id: 7 }, associations: { authors: [3] } }
+    - { fields: { id: 8 }, associations: { authors: [3, 4] } }
+    - { fields: { id: 9 }, associations: { authors: [4] } }
+    - { fields: { id: 10 }, associations: { authors: [4] } }
+AppBundle\Entity\Mark:
+    - { fields: { id: 2, value: 20 }, associations: { author: 4 } }
+AppBundle\Entity\Post:
+    - { fields: { id: 3, name: Super, description: Woaw, creationDate: 2020-06-15T14:25:15+02:00, lastUpdateDate: 2020-06-16T14:25:15+02:00 }, associations: { author: 4 } }
+    - { fields: { id: 4, name: Génial, description: 'Yes', creationDate: 2020-06-14T14:25:15+02:00, lastUpdateDate: 2020-06-16T14:25:15+02:00 }, associations: { author: 4 } }

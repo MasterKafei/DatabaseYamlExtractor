@@ -1,0 +1,3 @@
+database_yaml_extractor_homepage:
+    path:     /
+    defaults: { _controller: DatabaseYamlExtractorBundle:Default:index }

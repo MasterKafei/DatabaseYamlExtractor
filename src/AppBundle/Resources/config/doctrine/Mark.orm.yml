@@ -1,0 +1,22 @@
+AppBundle\Entity\Mark:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\MarkRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        value:
+            type: integer
+            length: 255
+            nullable: false
+    oneToOne:
+        author:
+            targetEntity: AppBundle\Entity\Author
+            inversedBy: mark
+            nullable: false
+            cascade: [persist, remove]
+    lifecycleCallbacks: {  }

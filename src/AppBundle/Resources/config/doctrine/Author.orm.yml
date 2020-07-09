@@ -1,0 +1,35 @@
+AppBundle\Entity\Author:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\AuthorRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: 255
+        lastName:
+            type: string
+            length: 255
+        age:
+            type: integer
+    oneToMany:
+        posts:
+            targetEntity: AppBundle\Entity\Post
+            mappedBy: author
+            cascade: [persist, remove]
+    oneToOne:
+        mark:
+            targetEntity: AppBundle\Entity\Mark
+            mappedBy: author
+            cascade: [persist, remove]
+    manyToMany:
+        manies:
+            targetEntity: AppBundle\Entity\Many
+            mappedBy: authors
+            casacade: [persist, remove]
+    lifecycleCallbacks: {  }

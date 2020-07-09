@@ -1,0 +1,18 @@
+AppBundle\Entity\Many:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ManyRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToMany:
+        authors:
+            targetEntity: AppBundle\Entity\Author
+            inversedBy: manies
+            casacade: [persist, remove]
+            joinTable:
+                name: authors_manies
+    lifecycleCallbacks: {  }
